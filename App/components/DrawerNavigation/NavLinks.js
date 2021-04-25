@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: '40%',
     marginLeft: '10%',
+    backgroundColor: 'grey'
   },
   navText: {
     fontSize: 30,
