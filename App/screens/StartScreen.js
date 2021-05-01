@@ -5,7 +5,7 @@ import {View, Text, ImageBackground, StyleSheet} from 'react-native';
 
 import StartButtons from '../components/StartScreen/StartButtons';
 
-const StartScreen = ({ navigation }) => {
+const StartScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -22,7 +22,7 @@ const StartScreen = ({ navigation }) => {
           Excellent
           <Text style={[styles.titleText, {color: '#f7ba7b'}]}>Flats</Text>
         </Text>
-        <StartButtons />
+        <StartButtons navigation={navigation} />
       </ImageBackground>
     </View>
   );

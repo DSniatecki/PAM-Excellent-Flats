@@ -1,17 +1,19 @@
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, {useState} from "react";
 import { StatusBar } from "expo-status-bar";
 import Ad from "../components/Ad/Ad";
 import AppHeader from "../components/AppHeader";
 import FlatsNotFound from "../components/Ad/FlatsNotFound";
+import {allFlats} from '../components/data';
 
 
-const FlatAdListScreen = ({ flatAds, updateFlats }) => {
+const FlatAdListScreen = ({navigation}) => {
+  const [flats, setFlats] = useState(allFlats);
 
   const changeIsFavourite = flat => {
-    const newFlatAds = [...flatAds];
+    const newFlatAds = [...flats];
     flat.isFavourite = !flat.isFavourite;
-    updateFlats(newFlatAds);
+    setFlats(newFlatAds);
   };
 
   const renderFlats = (flats) => {
@@ -26,6 +28,7 @@ const FlatAdListScreen = ({ flatAds, updateFlats }) => {
                 key={"favAd-" + i}
                 flat={flat}
                 changeIsFavourite={() => changeIsFavourite(flat)}
+                navigation={navigation}
               />)
           }
         </ScrollView>
@@ -35,9 +38,9 @@ const FlatAdListScreen = ({ flatAds, updateFlats }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <AppHeader screenTitle={"Ogłoszenia"} />
+      <AppHeader screenTitle={"Ogłoszenia"} navigation={navigation} navigationIcon="menu"/>
       {
-        renderFlats(flatAds)
+        renderFlats(flats)
       }
 
     </SafeAreaView>

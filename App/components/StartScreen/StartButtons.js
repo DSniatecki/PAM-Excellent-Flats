@@ -3,7 +3,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {View, Text, Pressable, StyleSheet} from 'react-native';
 
-const StartButtons = () => {
+const StartButtons = ({navigation}) => {
     return (
       <View style={styles.buttonsGroup}>
         <Pressable style={styles.button}>
@@ -14,7 +14,7 @@ const StartButtons = () => {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Text style={styles.buttonText}>Ulubione </Text>
+            <Text style={styles.buttonText}>Szukaj </Text>
             <Icon name="search" size={34} color="#FFF" />
           </View>
         </Pressable>
