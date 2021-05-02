@@ -31,16 +31,6 @@ export const NavLinks = ({navigation}) => {
           <View style={styles.underline}></View>
         )}
       </View>
-      <View>
-        <Text
-          onPress={() => navigation.navigate('FlatsList', {flats: allFlats})}
-          style={styles.navText}>
-          Mieszkania
-        </Text>
-        {currentRouteName === 'FlatsList' && (
-          <View style={styles.underline}></View>
-        )}
-      </View>
     </View>
   );
 };
