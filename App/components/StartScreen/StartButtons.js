@@ -14,7 +14,7 @@ const StartButtons = ({navigation}) => {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Text style={styles.buttonText}>Szukaj </Text>
+            <Text onPress={() => navigation.navigate("Filters")} style={styles.buttonText}>Szukaj </Text>
             <Icon name="search" size={34} color="#FFF" />
           </View>
         </Pressable>

@@ -39,7 +39,7 @@ const FlatAdScreen = ({navigation, route, updateFlat}) => {
           flat.isFavourite = !flat.isFavourite;
           updateFlat(flat);
         }}
-        navigationIcon="west"
+        navigationIcon="arrow-back"
         navigation={navigation}
       />
       <ScrollView style={styles.scrollView}>
@@ -127,10 +127,9 @@ const Map = ({location}) => {
 };
 const styles = StyleSheet.create({
   container: {
-    marginTop: 5,
     flex: 1,
     paddingTop: StatusBar.currentHeight,
-    backgroundColor: '#505050',
+    backgroundColor: '#757575',
   },
   scrollView: {},
   titleSection: {

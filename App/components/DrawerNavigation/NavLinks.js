@@ -16,7 +16,7 @@ export const NavLinks = ({navigation}) => {
         {currentRouteName === 'Start' && <View style={styles.underline}></View>}
       </View>
       <View>
-        <Text style={styles.navText}>Szukaj</Text>
+        <Text onPress={() => navigation.navigate("Filters")} style={styles.navText}>Szukaj</Text>
         {currentRouteName === 'Search' && (
           <View style={styles.underline}></View>
         )}

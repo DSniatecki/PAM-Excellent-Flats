@@ -15,7 +15,7 @@ const AppHeader = ({
     <View style={styles.container}>
       <Icon
         name={navigationIcon}
-        style={styles.menuButton}
+        style={styles.icon}
         size={34}
         color="#FFF"
         onPress={() => {
@@ -44,14 +44,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingBottom: 4,
+    paddingTop: 4,
     paddingLeft: 18,
     paddingRight: 18,
     backgroundColor: '#383838',
   },
-  backArrow: {
+  icon: {
     fontWeight: 'bold',
-    fontSize: 24,
-    color: '#fff',
+    fontSize: 34,
+    color: '#d1d1d1',
   },
   title: {
     fontSize: 20,
