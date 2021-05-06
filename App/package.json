@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "project",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -34,7 +34,8 @@
     "react-native-unimodules": "~0.13.3",
     "react-native-vector-icons": "^8.1.0",
     "react-native-video": "^5.1.1",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "react-native-webview": "^11.4.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

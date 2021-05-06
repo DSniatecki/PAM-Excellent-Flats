@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from "react";
 import {
   Dimensions,
   SafeAreaView,
@@ -6,20 +6,22 @@ import {
   StyleSheet,
   Text,
   View,
-} from 'react-native';
-import {StatusBar} from 'expo-status-bar';
-import MediaSlider from '../components/Ad/MediaSlider';
-import AppHeader from '../components/AppHeader';
-import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
+} from "react-native";
+import { StatusBar } from "expo-status-bar";
+import MediaSlider from "../components/Ad/MediaSlider";
+import AppHeader from "../components/AppHeader";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 // import MapView, { MAP_TYPES, UrlTile } from "react-native-maps";
 
-const WINDOW_WIDTH = Dimensions.get('window').width;
+const WINDOW_WIDTH = Dimensions.get("window").width;
 const SLIDER_WIDTH = WINDOW_WIDTH;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.86);
 const ITEM_HEIGHT = Math.round((ITEM_WIDTH * 3) / 4);
 
-const FlatAdScreen = ({navigation, route, updateFlat}) => {
-  const {flat} = route.params;
+const FlatAdScreen = ({ navigation, route }) => {
+  const { flat } = route.params;
+  const [, updateState] = useState();
+  const forceUpdate = useCallback(() => updateState({}), []);
   const {
     isFavourite,
     title,
@@ -33,11 +35,11 @@ const FlatAdScreen = ({navigation, route, updateFlat}) => {
   return (
     <SafeAreaView style={styles.container}>
       <AppHeader
-        screenTitle={'Ogłoszenie'}
+        screenTitle={"Ogłoszenie"}
         isFavourite={isFavourite}
         changeIsFavourite={() => {
           flat.isFavourite = !flat.isFavourite;
-          updateFlat(flat);
+          forceUpdate();
         }}
         navigationIcon="arrow-back"
         navigation={navigation}
@@ -57,16 +59,16 @@ const FlatAdScreen = ({navigation, route, updateFlat}) => {
   );
 };
 
-const Details = ({details, location}) => {
-  const {marketType, numberOfRooms, surface, constructionYear} = details;
-  const {city, district} = location;
+const Details = ({ details, location }) => {
+  const { marketType, numberOfRooms, surface, constructionYear } = details;
+  const { city, district } = location;
   return (
     <>
       <Text style={styles.header}>Szczegóły</Text>
       <View style={styles.row}>
         <Text style={styles.boldText}>{marketType}</Text>
         <Text style={styles.boldText}>{`${numberOfRooms} ${
-          numberOfRooms > 1 ? 'pokoje' : 'pokój'
+          numberOfRooms > 1 ? "pokoje" : "pokój"
         }`}</Text>
       </View>
       <View style={styles.row}>
@@ -79,15 +81,15 @@ const Details = ({details, location}) => {
     </>
   );
 };
-const Description = ({text}) => (
+const Description = ({ text }) => (
   <>
     <Text style={styles.header}>Opis</Text>
     <Text style={styles.text}>{text}</Text>
   </>
 );
 
-const Contact = ({contact}) => {
-  const {phoneNumber, email} = contact;
+const Contact = ({ contact }) => {
+  const { phoneNumber, email } = contact;
   return (
     <>
       <Text style={styles.header}>Kontakt</Text>
@@ -96,8 +98,8 @@ const Contact = ({contact}) => {
     </>
   );
 };
-const Map = ({location}) => {
-  const {city, district, coordinates} = location;
+const Map = ({ location }) => {
+  const { city, district, coordinates } = location;
   return (
     <>
       <Text style={styles.header}>Mapa</Text>
@@ -129,12 +131,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: StatusBar.currentHeight,
-    backgroundColor: '#757575',
+    backgroundColor: "#757575",
   },
   scrollView: {},
   titleSection: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   titleText: {
     fontSize: 18,
@@ -142,28 +144,28 @@ const styles = StyleSheet.create({
     marginRight: 10,
     marginTop: 5,
     marginBottom: 5,
-    textAlign: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: '#ffffff',
+    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "#ffffff",
   },
   header: {
     fontSize: 18,
-    fontWeight: 'bold',
-    color: '#f5a22b',
+    fontWeight: "bold",
+    color: "#f5a22b",
     marginLeft: 5,
   },
   text: {
-    color: '#ffffff',
+    color: "#ffffff",
     margin: 5,
   },
   boldText: {
-    color: '#ffffff',
+    color: "#ffffff",
     marginLeft: 5,
     marginRight: 5,
     marginTop: 2,
     marginBottom: 2,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   map: {
     marginTop: 10,
@@ -173,19 +175,19 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
+    resizeMode: "cover",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
   },
   row: {
     marginLeft: 10,
     marginRight: 10,
-    fontWeight: 'bold',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    fontWeight: "bold",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 });
 

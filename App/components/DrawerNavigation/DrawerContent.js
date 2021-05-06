@@ -1,11 +1,11 @@
-import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
-import {NavLinks} from './NavLinks';
+import { NavLinks } from "./NavLinks";
 
-export const DrawerContent = ({navigation}) => {
-  
+export const DrawerContent = ({ navigation, flatManager }) => {
+
   return (
     <View style={styles.container}>
       <View style={styles.blackRectangle}></View>
@@ -17,7 +17,7 @@ export const DrawerContent = ({navigation}) => {
           color="#FFF"
           onPress={() => navigation.closeDrawer()}
         />
-        <NavLinks navigation={navigation} />
+        <NavLinks navigation={navigation} flatManager={flatManager} />
       </View>
     </View>
   );
@@ -26,21 +26,21 @@ export const DrawerContent = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   blackRectangle: {
-    backgroundColor: '#000',
-    width: '20%',
-    height: '100%',
+    backgroundColor: "#000",
+    width: "20%",
+    height: "100%",
   },
   navigation: {
     flex: 1,
-    backgroundColor: '#262626',
-    width: '80%',
-    height: '100%',
+    backgroundColor: "#262626",
+    width: "80%",
+    height: "100%",
   },
   closeIcon: {
-    position: 'absolute',
+    position: "absolute",
     right: 10,
     top: 15,
   },

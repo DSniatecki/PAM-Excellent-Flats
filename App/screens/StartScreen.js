@@ -22,7 +22,7 @@ const StartScreen = ({navigation}) => {
           Excellent
           <Text style={[styles.titleText, {color: '#f7ba7b'}]}>Flats</Text>
         </Text>
-        <StartButtons navigation={navigation} />
+        <StartButtons navigation={navigation}/>
       </ImageBackground>
     </View>
   );

@@ -7,11 +7,12 @@ import FlatsNotFound from '../components/Ad/FlatsNotFound';
 import {allFlats} from '../components/data';
 
 const FlatAdListScreen = ({route, navigation}) => {
-  const [flats, setFlats] = useState(allFlats);
+  const [flats, updateFlats] = useState(allFlats);
   const [filteredFlats, setFilteredFlats] = useState([]);
   const {location, priceFrom, priceTo, surfaceFrom, surfaceTo} = route.params;
 
   useEffect(() => {
+    updateFlats(allFlats);
     setFilteredFlats(filterFlats());
   }, [location, priceFrom, priceTo, surfaceFrom, surfaceTo]);
 
@@ -29,7 +30,7 @@ const FlatAdListScreen = ({route, navigation}) => {
   const changeIsFavourite = flat => {
     const newFlatAds = [...flats];
     flat.isFavourite = !flat.isFavourite;
-    setFlats(newFlatAds);
+    updateFlats(newFlatAds);
   };
 
   const renderFlats = flats => {

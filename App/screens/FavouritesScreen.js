@@ -1,20 +1,27 @@
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import Ad from "../components/Ad/Ad";
 import AppHeader from "../components/AppHeader";
 import FlatsNotFound from "../components/Ad/FlatsNotFound";
+import { allFlats } from "../components/data";
 
 
-const FavouritesScreen = ({ flatAds, updateFlats }) => {
+const FavouritesScreen = ({ navigation, flatAds }) => {
+
+  const [flats, updateFlats] = useState(allFlats);
+
+  useEffect(() => {
+    updateFlats(allFlats);
+  });
 
   const changeIsFavourite = flat => {
-    const newFlatAds = [...flatAds];
+    const newFlatAds = [...flats];
     flat.isFavourite = !flat.isFavourite;
     updateFlats(newFlatAds);
   };
 
-  const favouriteFlats = flatAds.filter(flat => flat.isFavourite);
+  const favouriteFlats = flats.filter(flat => flat.isFavourite);
 
   const renderFlats = (favouriteFlats) => {
     if (favouriteFlats.length === 0) {
@@ -37,7 +44,9 @@ const FavouritesScreen = ({ flatAds, updateFlats }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <AppHeader screenTitle={"Ulubione"} />
+      <AppHeader screenTitle={"Ulubione"}
+                 navigation={navigation}
+                 navigationIcon="arrow-back" />
       {
         renderFlats(favouriteFlats)
       }
