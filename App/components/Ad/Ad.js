@@ -2,22 +2,29 @@ import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import MediaSlider from "./MediaSlider";
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Ad = ({ flat, changeIsFavourite, navigation }) => {
-  const { isFavourite, title, price, media, details } = flat;
+  const { isFavourite, price, media, details, location } = flat;
   return (
     <View style={styles.container}>
-      <MediaSlider media={media} />
+      <Favourite isFavourite={isFavourite} change={changeIsFavourite}/>
+      <MediaSlider style={{position: 'relative'}} media={media} />
+
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("FlatAd", { flat });
+          navigation.navigate('FlatAd', {flat});
         }}>
-        <View style={styles.section}>
-          <Text style={styles.titleText}>{title}</Text>
-          <View style={styles.section2}>
-            <Text style={styles.header}>{price} zł</Text>
-            <Favourite isFavourite={isFavourite} change={changeIsFavourite} />
-            <Text style={styles.text}>{details.surface} m2</Text>
+        <View style={styles.info}>
+          <View style={styles.infoRow}>
+            <Text style={styles.price}>{price} zł</Text>
+            <Text style={styles.details}>{details.surface} m2</Text>
+          </View>
+          <View style={styles.infoRow}>
+            <Text style={styles.location}>
+              {location.city}, {location.district}
+            </Text>
+            <Text style={styles.details}>{details.numberOfRooms} pokoje</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -25,31 +32,39 @@ const Ad = ({ flat, changeIsFavourite, navigation }) => {
   );
 };
 
-const Favourite = ({ isFavourite, change }) => (
-  <Text style={{ fontSize: 22 }} onPress={() => {
-    if (!isFavourite) {
-      change();
-    } else {
-      Alert.alert(
-        "Confirmation",
-        "Are you sure you want to remove this ad from favourites?",
-        [
-          {
-            text: "Cancel",
-            style: "cancel",
-          },
-          {
-            text: "Confirm",
-            onPress: () => change(),
-            style: 'positive',
-          },
-        ],
-        {
-          cancelable: true,
-        },
-      );
-    }
-  }}>{isFavourite ? "❤" : "🖤"}</Text>
+const Favourite = ({isFavourite, change}) => (
+  <View style={styles.iconBackground}>
+    <Icon
+      color="#f5a22b"
+      style={styles.icon}
+      size={34}
+      name={isFavourite ? 'favorite' : 'favorite-border'}
+      onPress={() => {
+        if (!isFavourite) {
+          change();
+        } else {
+          Alert.alert(
+            'Confirmation',
+            'Are you sure you want to remove this ad from favourites?',
+            [
+              {
+                text: 'Cancel',
+                style: 'cancel',
+              },
+              {
+                text: 'Confirm',
+                onPress: () => change(),
+                style: 'positive',
+              },
+            ],
+            {
+              cancelable: true,
+            },
+          );
+        }
+      }}
+    />
+  </View>
 );
 
 const styles = StyleSheet.create({
@@ -58,34 +73,33 @@ const styles = StyleSheet.create({
     paddingTop: StatusBar.currentHeight,
     backgroundColor: "#505050",
   },
-  section: {
-    marginTop: 2,
-    marginBottom: 6,
-    marginLeft: 10,
-    marginRight: 10,
+  info: {
+    paddingTop: 5,
+    paddingBottom: 10,
+    marginLeft: 15,
+    marginRight: 15,
   },
-  titleText: {
+  infoRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  price: {
+    color: '#f5a22b',
+    fontSize: 28,
+    fontWeight: '200',
+  },
+  location: {
+    color: '#FFF',
     fontSize: 18,
-    textAlign: "center",
-    color: "#ffffff",
   },
-  section2: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  header: {
+  details: {
+    color: '#FFF',
     fontSize: 18,
-    fontWeight: "bold",
-    color: "#f5a22b",
-    marginLeft: 5,
   },
-  text: {
-    marginRight: 5,
-    color: "#ffffff",
-    fontSize: 18,
-    fontWeight: "bold",
-  },
+  iconBackground: {
+    justifyContent:'center', alignItems: 'center', flex: 1,position: 'absolute', zIndex:999, right: 10, top:10, borderRadius: 50,width: 50, height: 50, backgroundColor: "#000"
+  }
 });
 
 export default Ad;

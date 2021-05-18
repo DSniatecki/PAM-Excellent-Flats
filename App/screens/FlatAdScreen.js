@@ -15,8 +15,8 @@ import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 
 const WINDOW_WIDTH = Dimensions.get("window").width;
 const SLIDER_WIDTH = WINDOW_WIDTH;
-const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.86);
-const ITEM_HEIGHT = Math.round((ITEM_WIDTH * 3) / 4);
+const ITEM_WIDTH = Math.round(SLIDER_WIDTH);
+const ITEM_HEIGHT = Math.round((ITEM_WIDTH * 3) / 5);
 
 const FlatAdScreen = ({ navigation, route }) => {
   const { flat } = route.params;
@@ -35,7 +35,7 @@ const FlatAdScreen = ({ navigation, route }) => {
   return (
     <SafeAreaView style={styles.container}>
       <AppHeader
-        screenTitle={"Ogłoszenie"}
+        screenTitle={'Ogłoszenie'}
         isFavourite={isFavourite}
         changeIsFavourite={() => {
           flat.isFavourite = !flat.isFavourite;
@@ -46,14 +46,16 @@ const FlatAdScreen = ({ navigation, route }) => {
       />
       <ScrollView style={styles.scrollView}>
         <MediaSlider media={media} height={ITEM_HEIGHT} width={ITEM_WIDTH} />
-        <View style={styles.titleSection}>
-          <Text style={styles.titleText}>{title}</Text>
-          <Text style={styles.header}>{`${price} zł`}</Text>
+        <View style={styles.info}>
+          <View style={styles.titleSection}>
+            <Text style={styles.titleText}>{title}</Text>
+            <Text style={styles.price}>{`${price} zł`}</Text>
+          </View>
+          <Details details={details} location={location} />
+          <Description text={description} />
+          <Contact contact={contact} />
+          <Map location={location} />
         </View>
-        <Details details={details} location={location} />
-        <Description text={description} />
-        <Contact contact={contact} />
-        <Map location={location} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -66,21 +68,22 @@ const Details = ({ details, location }) => {
     <>
       <Text style={styles.header}>Szczegóły</Text>
       <View style={styles.row}>
-        <Text style={styles.boldText}>{marketType}</Text>
-        <Text style={styles.boldText}>{`${numberOfRooms} ${
-          numberOfRooms > 1 ? "pokoje" : "pokój"
+        <Text style={styles.text}>{marketType}</Text>
+        <Text style={styles.text}>{`${numberOfRooms} ${
+          numberOfRooms > 1 ? 'pokoje' : 'pokój'
         }`}</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.boldText}>{`${city}, ${district}`}</Text>
-        <Text style={styles.boldText}>{surface} m2</Text>
+        <Text style={styles.text}>{constructionYear}</Text>
+        <Text style={styles.text}>{surface} m2</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.boldText}>{constructionYear}</Text>
+        <Text style={styles.boldText}>{`${city}, ${district}`}</Text>
       </View>
     </>
   );
 };
+
 const Description = ({ text }) => (
   <>
     <Text style={styles.header}>Opis</Text>
@@ -131,12 +134,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: StatusBar.currentHeight,
-    backgroundColor: "#757575",
+    backgroundColor: '#505050',
   },
-  scrollView: {},
+  info: {
+    paddingLeft: '2%',
+    paddingRight: '2%',
+  },
   titleSection: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  price: {
+    fontSize: 24,
+    color: '#f5a22b',
+    fontWeight: 'bold',
   },
   titleText: {
     fontSize: 18,
@@ -144,50 +156,56 @@ const styles = StyleSheet.create({
     marginRight: 10,
     marginTop: 5,
     marginBottom: 5,
-    textAlign: "center",
-    justifyContent: "center",
-    alignItems: "center",
-    color: "#ffffff",
+    textAlign: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: '#ffffff',
   },
   header: {
     fontSize: 18,
-    fontWeight: "bold",
-    color: "#f5a22b",
+    fontWeight: 'bold',
+    color: '#f5a22b',
     marginLeft: 5,
+    marginTop: 20,
+    marginBottom: 5,
   },
   text: {
-    color: "#ffffff",
-    margin: 5,
+    color: '#ffffff',
+    fontSize: 16,
+    textAlign: 'justify',
+    marginLeft: 5,
+    marginBottom: 2,
+    fontSize: 16,
   },
   boldText: {
-    color: "#ffffff",
+    color: '#ffffff',
     marginLeft: 5,
     marginRight: 5,
     marginTop: 2,
     marginBottom: 2,
-    fontWeight: "bold",
+    fontWeight: 'bold',
+    fontSize: 16,
   },
   map: {
-    marginTop: 10,
     marginBottom: 10,
     width: WINDOW_WIDTH * 0.95,
     height: WINDOW_WIDTH * 0.5,
   },
   image: {
     flex: 1,
-    resizeMode: "cover",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-    height: "100%",
+    resizeMode: 'cover',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
   },
   row: {
     marginLeft: 10,
     marginRight: 10,
-    fontWeight: "bold",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    fontWeight: 'bold',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
 

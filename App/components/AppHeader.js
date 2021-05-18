@@ -1,7 +1,5 @@
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { StatusBar } from "expo-status-bar";
-import Ad from "../components/Ad/Ad";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 const AppHeader = ({
@@ -17,7 +15,6 @@ const AppHeader = ({
         name={navigationIcon}
         style={styles.icon}
         size={34}
-        color="#FFF"
         onPress={() => {
           if (navigationIcon === "menu")
             navigation.openDrawer();
@@ -44,8 +41,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingBottom: 4,
-    paddingTop: 4,
+    paddingBottom: 7,
+    paddingTop: 7,
     paddingLeft: 18,
     paddingRight: 18,
     backgroundColor: "#383838"
@@ -66,8 +63,21 @@ const styles = StyleSheet.create({
   },
 });
 
-const Favourite = ({ isFavourite, changeIsFavourite }) => (
-  <Text style={{ fontSize: 22, width: 50, textAlign: 'center' }} onPress={changeIsFavourite}>{isFavourite ? "❤" : "🖤"}</Text>
-);
+const Favourite = ({isFavourite, changeIsFavourite}) =>
+  isFavourite ? (
+    <Icon
+      onPress={changeIsFavourite}
+      size={34}
+      color="#dc143c"
+      name="favorite"
+    />
+  ) : (
+    <Icon
+      onPress={changeIsFavourite}
+      size={34}
+      color="#d1d1d1"
+      name="favorite-border"
+    />
+  );
 
 export default AppHeader;

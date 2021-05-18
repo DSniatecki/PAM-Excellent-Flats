@@ -38,7 +38,7 @@ const FlatAdListScreen = ({route, navigation}) => {
       return <FlatsNotFound />;
     } else {
       return (
-        <ScrollView style={{marginTop: 5, marginBottom: 5}}>
+        <ScrollView>
           {flats.map((flat, i) => (
             <Ad
               key={'favAd-' + i}

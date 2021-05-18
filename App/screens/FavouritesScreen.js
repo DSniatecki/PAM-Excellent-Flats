@@ -57,7 +57,6 @@ const FavouritesScreen = ({ navigation, flatAds }) => {
 const styles = StyleSheet.create(
   {
     container: {
-      marginTop: 5,
       flex: 1,
       paddingTop: StatusBar.currentHeight,
       backgroundColor: "#505050",
