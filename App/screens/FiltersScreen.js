@@ -9,7 +9,6 @@ import { Formik } from "formik";
 const FiltersScreen = ({ navigation }) => {
   const [purchaseType, setPurchaseType] = useState(0);
   const buttons = ["Kupno", "Wynajem"];
-
   const priceOptions = [
     { label: "100 000 zł", value: 100000 },
     { label: "200 000 zł", value: 200000 },
@@ -34,7 +33,16 @@ const FiltersScreen = ({ navigation }) => {
     { label: "250 m2", value: 250 },
   ];
 
-  const updatePurchaseType = selectedType => {
+  const updatePurchaseType = (selectedType, setFieldValue) => {
+
+    if (selectedType === 0) {
+      setFieldValue("forSale", true)
+      setFieldValue("forRental", false)
+    } else if(selectedType === 1) {
+      setFieldValue('forSale', false);
+      setFieldValue('forRental', true);
+    }
+
     setPurchaseType(selectedType);
   };
 
@@ -48,6 +56,8 @@ const FiltersScreen = ({ navigation }) => {
       <Formik
         initialValues={{
           location: "",
+          forSale: true,
+          forRental: false,
           priceFrom: 100000,
           priceTo: 1000000,
           surfaceFrom: 20,
@@ -66,9 +76,10 @@ const FiltersScreen = ({ navigation }) => {
             <Text style={styles.text}>lub</Text>
             <Icon name="my-location" size={60} color="#f5a44d" onPress={() => navigation.navigate("Map")} />
             <Text style={styles.text}>Wybierz</Text>
+            {console.log(values)}
             <ButtonGroup
               buttons={buttons}
-              onPress={updatePurchaseType}
+              onPress={(selectedType) => updatePurchaseType(selectedType, setFieldValue)}
               selectedIndex={purchaseType}
               containerStyle={{
                 height: 50,
@@ -106,7 +117,7 @@ const FiltersScreen = ({ navigation }) => {
             <View style={styles.selectors}>
               <RNPickerSelect
                 onValueChange={(value, index) => {
-                  setFieldValue("surfaceFrom", value.value);
+                  setFieldValue("surfaceFrom", value);
                 }}
                 placeholder={{ label: "Od: " }}
                 style={pickerStyles}

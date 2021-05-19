@@ -9,22 +9,29 @@ import {allFlats} from '../components/data';
 const FlatAdListScreen = ({route, navigation}) => {
   const [flats, updateFlats] = useState(allFlats);
   const [filteredFlats, setFilteredFlats] = useState([]);
-  const {location, priceFrom, priceTo, surfaceFrom, surfaceTo} = route.params;
+  const {location, priceFrom, priceTo, surfaceFrom, surfaceTo, forRental, forSale} = route.params;
 
   useEffect(() => {
     updateFlats(allFlats);
     setFilteredFlats(filterFlats());
-  }, [location, priceFrom, priceTo, surfaceFrom, surfaceTo]);
+  }, [location, priceFrom, priceTo, surfaceFrom, surfaceTo, forRental, forSale]);
 
+  console.log(forSale)
+  console.log(forRental)
   const filterFlats = () => {
-    return flats.filter(
-      f =>
-        f.location.city.toLowerCase().includes(location.toLowerCase()) &&
-        f.price >= priceFrom &&
-        f.price <= priceTo &&
-        f.details.surface >= surfaceFrom &&
-        f.details.surface <= surfaceTo
+    let listedFlats = flats.filter(
+    f =>
+      f.location.city.toLowerCase().includes(location.toLowerCase()) &&
+      f.price >= priceFrom &&
+      f.price <= priceTo &&
+      f.details.surface >= surfaceFrom &&
+      f.details.surface <= surfaceTo 
     );
+
+    if (forRental === true)
+      return listedFlats.filter(f => f.forRental === forRental)
+    else if (forSale === true)
+        return listedFlats.filter(f => f.forSale === forSale);
   };
 
   const changeIsFavourite = flat => {
