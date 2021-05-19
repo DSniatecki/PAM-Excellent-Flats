@@ -17,7 +17,7 @@ const Ad = ({ flat, changeIsFavourite, navigation }) => {
         }}>
         <View style={styles.info}>
           <View style={styles.infoRow}>
-            <Text style={styles.price}>{price} zł</Text>
+            <Text style={styles.price}>{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} zł</Text>
             <Text style={styles.details}>{details.surface} m2</Text>
           </View>
           <View style={styles.infoRow}>

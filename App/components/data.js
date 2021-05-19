@@ -176,10 +176,190 @@ const flat4 = {
   },
 };
 
+const flat5 = {
+  isFavourite: false,
+  title: 'Nowoczesny bliźniak na osiedlu Dobrzec',
+  price: 413000,
+  forSale: true,
+  forRental: true,
+  media: [
+    {
+      isMain: true,
+      type: 'image',
+      uri:
+        'https://ireland.apollo.olxcdn.com/v1/files/eyJmbiI6InRzZWw5a3pvZjM0dDItQVBMIiwidyI6W3siZm4iOiJqMWozbzEzbTZiZ24xLUFQTCIsInMiOiIxNCIsInAiOiIxMCwtMTAiLCJhIjoiMCJ9XX0.iGBTau_mcHSJ8pTk_fjYM5LrKTNFzquHeEl-BdRsMoE/image;s=1280x1024;q=80',
+    },
+    {
+      type: 'image',
+      uri:
+        'https://thumbs.img-sprzedajemy.pl/1000x901c/e5/02/f4/wroclaw-gajowicka-mieszkanie-2-pokoje-z-balkonem-dolnoslaskie-sprzedam-538986681.jpg',
+    },
+  ],
+  details: {
+    marketType: 'Rynek pierwotny',
+    numberOfRooms: 5,
+    surface: 123.93,
+    constructionYear: 2021,
+  },
+  description:
+    'Bardzo interesujący dom jednorodzinny o powierzchni 123.93 m2, w którym mieści się pokój dzienny z wydzielonym, przysłoniętym aneksem kuchennym, dwiema sypialniami, łazienką, holem. Do mieszkania przynależy ogródek, do którego wychodzi się wprost z pokoju dziennego lub z sypialni gospodarzy. Ogród to ogromna zaleta mieszkania, jego powierzchnia (w zależności od mieszkania 105 – 114 m2) jest spora i pozwala zorganizować przestrzeń do zabawy dla dzieci, wypoczynkową a nawet uprawiać zioła i warzywa na własny użytek. Część ogrodu jest zadaszona, dzięki czemu korzystać z niego można nawet przy gorszej pogodzie. Co ważne, ogród jest osłonięty przed wzrokiem przechodniów i pozwala właścicielom zachować pełnię prywatności.\n' +
+    '\n' +
+    'Pokój dzienny łączy się z aneksem kuchennym, jednak nie jest to otwarta przestrzeń. Dzięki temu rozwiązaniu kuchnia staje się praktycznie osobnym pomieszczeniem. Do aneksu kuchennego przylega niewielkie pomieszczenie gospodarcze o powierzchni 2,57 m2, które pełnić może funkcję schowka, suszarni, a nawet spiżarni. Sam pokój dzienny jest tak przestronny, że wykreować w nim można zarówno jadalnię, jak przestrzeń do wypoczynku i domowe biuro. Hol obejmujący 10 m2 daje możliwość postawienia w nim garderoby, stanowi też naturalne przedłużenie salonu, gdyż obie powierzchnie łączy dość szerokie przejście. Ustawna łazienka i sypialnie dopełniają wizerunku mieszkania. Jest ono idealną propozycją dla rodziny z jednym lub dwójką dzieci.',
+  contact: {
+    phoneNumber: '671 211 313',
+    email: 'flatmaster2@gmail.com',
+  },
+  location: {
+    city: 'Kalisz',
+    district: 'Dobrzec',
+    coordinates: {
+      latitude: 51.748286615925025,
+      longitude: 18.046384184626554,
+    },
+  },
+};
+
+const flat6 = {
+  isFavourite: false,
+  title: 'Interesujące mieszkanie na osiedlu Majków',
+  price: 617600,
+  forSale: true,
+  forRental: false,
+  media: [
+    {
+      type: 'image',
+      uri:
+        'https://ireland.apollo.olxcdn.com/v1/files/eyJmbiI6InowdXIzanJrbWMwMi1BUEwiLCJ3IjpbeyJmbiI6ImoxajNvMTNtNmJnbjEtQVBMIiwicyI6IjE0IiwicCI6IjEwLC0xMCIsImEiOiIwIn1dfQ.Pw3CRH2QTIJSqSWdWKE8O3hctzbOpTHofidsL1AOYro/image;s=1280x1024;q=80',
+    },
+    {
+      type: 'image',
+      uri:
+        'https://ireland.apollo.olxcdn.com/v1/files/eyJmbiI6IjVncTZtem80MG9mNzMtQVBMIiwidyI6W3siZm4iOiJqMWozbzEzbTZiZ24xLUFQTCIsInMiOiIxNCIsInAiOiIxMCwtMTAiLCJhIjoiMCJ9XX0.9_mABbHNf8Rk2csQag3aMy3UY1xpkSXkerLBYU-GBzw/image;s=1280x1024;q=80',
+    },
+    {
+      isMain: true,
+      type: 'image',
+      uri:
+        'https://ireland.apollo.olxcdn.com/v1/files/eyJmbiI6Ijd6bm5vdXFncnAzbTItQVBMIiwidyI6W3siZm4iOiJqMWozbzEzbTZiZ24xLUFQTCIsInMiOiIxNCIsInAiOiIxMCwtMTAiLCJhIjoiMCJ9XX0.L2oR9HDSk2y2XvSREK7PTXjLD1anR59BMmWqykxhJ8o/image;s=1280x1024;q=80',
+    },
+  ],
+  details: {
+    marketType: 'Rynek wtórny',
+    numberOfRooms: 4,
+    surface: 89.45,
+    constructionYear: 2019,
+  },
+  description:
+    'Bardzo interesujący apartament o powierzchni 89.45 m2, w którym mieści się pokój dzienny z wydzielonym, przysłoniętym aneksem kuchennym, dwiema sypialniami, łazienką, holem. Do mieszkania przynależy ogródek, do którego wychodzi się wprost z pokoju dziennego lub z sypialni gospodarzy. Ogród to ogromna zaleta mieszkania, jego powierzchnia (w zależności od mieszkania 105 – 114 m2) jest spora i pozwala zorganizować przestrzeń do zabawy dla dzieci, wypoczynkową a nawet uprawiać zioła i warzywa na własny użytek. Część ogrodu jest zadaszona, dzięki czemu korzystać z niego można nawet przy gorszej pogodzie. Co ważne, ogród jest osłonięty przed wzrokiem przechodniów i pozwala właścicielom zachować pełnię prywatności.\n' +
+    '\n' +
+    'Pokój dzienny łączy się z aneksem kuchennym, jednak nie jest to otwarta przestrzeń. Dzięki temu rozwiązaniu kuchnia staje się praktycznie osobnym pomieszczeniem. Do aneksu kuchennego przylega niewielkie pomieszczenie gospodarcze o powierzchni 2,57 m2, które pełnić może funkcję schowka, suszarni, a nawet spiżarni. Sam pokój dzienny jest tak przestronny, że wykreować w nim można zarówno jadalnię, jak przestrzeń do wypoczynku i domowe biuro. Hol obejmujący 10 m2 daje możliwość postawienia w nim garderoby, stanowi też naturalne przedłużenie salonu, gdyż obie powierzchnie łączy dość szerokie przejście. Ustawna łazienka i sypialnie dopełniają wizerunku mieszkania. Jest ono idealną propozycją dla rodziny z jednym lub dwójką dzieci.',
+  contact: {
+    phoneNumber: '777 231 213',
+    email: 'super.flat2@gmail.com',
+  },
+  location: {
+    city: 'Kalisz',
+    district: 'Majków',
+    coordinates: {
+      latitude: 51.778286615925025,
+      longitude: 18.086384184626554,
+    },
+  },
+};
+
+const flat7 = {
+  isFavourite: false,
+  title: 'Mieszkanie na nowym osiedlu przy ulicy Podmiejskiej',
+  price: 523000,
+  forSale: true,
+  forRental: true,
+  media: [
+    {
+      isMain: true,
+      type: 'image',
+      uri:
+        'https://ireland.apollo.olxcdn.com/v1/files/eyJmbiI6InVsdmhza3JzYWlhZjItQVBMIiwidyI6W3siZm4iOiJqMWozbzEzbTZiZ24xLUFQTCIsInMiOiIxNCIsInAiOiIxMCwtMTAiLCJhIjoiMCJ9XX0.fcnFrExLpZNMV0YTGhAf_FCIdE-tZt-he4XKrJa8S2Y/image;s=1280x1024;q=80',
+    },
+    {
+      type: 'image',
+      uri:
+        'https://ireland.apollo.olxcdn.com/v1/files/eyJmbiI6Inl2bjUzMHRnbXR3bDMtQVBMIiwidyI6W3siZm4iOiJqMWozbzEzbTZiZ24xLUFQTCIsInMiOiIxNCIsInAiOiIxMCwtMTAiLCJhIjoiMCJ9XX0.UGMw66sFeAAYbASmL3D9o381jIAspImDAQfLMcIocoQ/image;s=1280x1024;q=80',
+    },
+  ],
+  details: {
+    marketType: 'Rynek wtórny',
+    numberOfRooms: 2,
+    surface: 41.93,
+    constructionYear: 2014,
+  },
+  description:
+    'Bardzo interesujący apartament o powierzchni 41.93 m2, w którym mieści się pokój dzienny z wydzielonym, przysłoniętym aneksem kuchennym, dwiema sypialniami, łazienką, holem. Do mieszkania przynależy ogródek, do którego wychodzi się wprost z pokoju dziennego lub z sypialni gospodarzy. Ogród to ogromna zaleta mieszkania, jego powierzchnia (w zależności od mieszkania 105 – 114 m2) jest spora i pozwala zorganizować przestrzeń do zabawy dla dzieci, wypoczynkową a nawet uprawiać zioła i warzywa na własny użytek. Część ogrodu jest zadaszona, dzięki czemu korzystać z niego można nawet przy gorszej pogodzie. Co ważne, ogród jest osłonięty przed wzrokiem przechodniów i pozwala właścicielom zachować pełnię prywatności.\n' +
+    '\n' +
+    'Pokój dzienny łączy się z aneksem kuchennym, jednak nie jest to otwarta przestrzeń. Dzięki temu rozwiązaniu kuchnia staje się praktycznie osobnym pomieszczeniem. Do aneksu kuchennego przylega niewielkie pomieszczenie gospodarcze o powierzchni 2,57 m2, które pełnić może funkcję schowka, suszarni, a nawet spiżarni. Sam pokój dzienny jest tak przestronny, że wykreować w nim można zarówno jadalnię, jak przestrzeń do wypoczynku i domowe biuro. Hol obejmujący 10 m2 daje możliwość postawienia w nim garderoby, stanowi też naturalne przedłużenie salonu, gdyż obie powierzchnie łączy dość szerokie przejście. Ustawna łazienka i sypialnie dopełniają wizerunku mieszkania. Jest ono idealną propozycją dla rodziny z jednym lub dwójką dzieci.',
+  contact: {
+    phoneNumber: '777 231 213',
+    email: 'super.flat2@gmail.com',
+  },
+  location: {
+    city: 'Kalisz',
+    district: 'Kaliniec',
+    coordinates: {
+      latitude: 51.748286615815025,
+      longitude: 18.046384182226554,
+    },
+  },
+};
+
+const flat8 = {
+  isFavourite: false,
+  title: 'Interesujące mieszkanie dla studentów',
+  price: 523000,
+  forSale: true,
+  forRental: false,
+  media: [
+    {
+      type: 'image',
+      uri:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnP1xXqLlCQV25JV3FbFtvNdoL1TlhTOxWYw&usqp=CAU',
+    },
+    {
+      isMain: true,
+      type: 'image',
+      uri:
+        'https://i.st-nieruchomosci-online.pl/gt8yhbc/mieszkanie-wroclaw.jpg',
+    },
+  ],
+  details: {
+    marketType: 'Rynek wtórny',
+    numberOfRooms: 3,
+    surface: 48.45,
+    constructionYear: 2012,
+  },
+  description:
+    'Bardzo interesujący apartament o powierzchni 48.45 m2, w którym mieści się pokój dzienny z wydzielonym, przysłoniętym aneksem kuchennym, dwiema sypialniami, łazienką, holem. Do mieszkania przynależy ogródek, do którego wychodzi się wprost z pokoju dziennego lub z sypialni gospodarzy. Ogród to ogromna zaleta mieszkania, jego powierzchnia (w zależności od mieszkania 105 – 114 m2) jest spora i pozwala zorganizować przestrzeń do zabawy dla dzieci, wypoczynkową a nawet uprawiać zioła i warzywa na własny użytek. Część ogrodu jest zadaszona, dzięki czemu korzystać z niego można nawet przy gorszej pogodzie. Co ważne, ogród jest osłonięty przed wzrokiem przechodniów i pozwala właścicielom zachować pełnię prywatności.\n' +
+    '\n' +
+    'Pokój dzienny łączy się z aneksem kuchennym, jednak nie jest to otwarta przestrzeń. Dzięki temu rozwiązaniu kuchnia staje się praktycznie osobnym pomieszczeniem. Do aneksu kuchennego przylega niewielkie pomieszczenie gospodarcze o powierzchni 2,57 m2, które pełnić może funkcję schowka, suszarni, a nawet spiżarni. Sam pokój dzienny jest tak przestronny, że wykreować w nim można zarówno jadalnię, jak przestrzeń do wypoczynku i domowe biuro. Hol obejmujący 10 m2 daje możliwość postawienia w nim garderoby, stanowi też naturalne przedłużenie salonu, gdyż obie powierzchnie łączy dość szerokie przejście. Ustawna łazienka i sypialnie dopełniają wizerunku mieszkania. Jest ono idealną propozycją dla rodziny z jednym lub dwójką dzieci.',
+  contact: {
+    phoneNumber: '777 231 213',
+    email: 'super.flat2@gmail.com',
+  },
+  location: {
+    city: 'Wrocław',
+    district: 'Śródmieście',
+    coordinates: {
+      latitude: 51.067449,
+      longitude: 17.059338,
+    },
+  },
+};
 
 export const allFlats = [
   flat1,
   flat2,
   flat3,
   flat4,
+  flat5,
+  flat6,
+  flat7,
+  flat8,
 ];

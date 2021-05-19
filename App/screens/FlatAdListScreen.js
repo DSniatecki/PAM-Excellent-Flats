@@ -16,8 +16,6 @@ const FlatAdListScreen = ({route, navigation}) => {
     setFilteredFlats(filterFlats());
   }, [location, priceFrom, priceTo, surfaceFrom, surfaceTo, forRental, forSale]);
 
-  console.log(forSale)
-  console.log(forRental)
   const filterFlats = () => {
     let listedFlats = flats.filter(
     f =>

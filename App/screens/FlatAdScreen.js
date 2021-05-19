@@ -49,7 +49,9 @@ const FlatAdScreen = ({ navigation, route }) => {
         <View style={styles.info}>
           <View style={styles.titleSection}>
             <Text style={styles.titleText}>{title}</Text>
-            <Text style={styles.price}>{`${price} zł`}</Text>
+            <Text style={styles.price}>
+              {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} zł
+            </Text>
           </View>
           <Details details={details} location={location} />
           <Description text={description} />
