@@ -7,13 +7,8 @@ import FlatsNotFound from "../components/Ad/FlatsNotFound";
 import { allFlats } from "../components/data";
 
 
-const FavouritesScreen = ({ navigation }) => {
-
+const FavouritesScreen = ({ navigation, route }) => {
   const [flats, updateFlats] = useState(allFlats);
-
-  useEffect(() => {
-    updateFlats([...allFlats]);
-  });
 
   const changeIsFavourite = flat => {
     const newFlatAds = [...flats];
@@ -35,6 +30,8 @@ const FavouritesScreen = ({ navigation }) => {
               flat={flat}
               changeIsFavourite={() => changeIsFavourite(flat)}
               navigation={navigation}
+              flats={favouriteFlats}
+              setFlats={updateFlats}
             />
           ))}
         </ScrollView>

@@ -18,7 +18,7 @@ const ITEM_WIDTH = Math.round(SLIDER_WIDTH);
 const ITEM_HEIGHT = Math.round((ITEM_WIDTH * 3) / 5);
 
 const FlatAdScreen = ({ navigation, route }) => {
-  const { flat } = route.params;
+  const { flat, setFlats, flats } = route.params;
   const [, updateState] = useState();
   const forceUpdate = useCallback(() => updateState({}), []);
   const {
@@ -39,6 +39,9 @@ const FlatAdScreen = ({ navigation, route }) => {
         changeIsFavourite={() => {
           flat.isFavourite = !flat.isFavourite;
           forceUpdate();
+          const index = flats.findIndex(f => f.id === flat.id);
+          flats[index] = flat;
+          setFlats([...flats])
         }}
         navigationIcon="arrow-back"
         navigation={navigation}

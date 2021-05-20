@@ -4,7 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import MediaSlider from "./MediaSlider";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Ad = ({ flat, changeIsFavourite, navigation }) => {
+const Ad = ({ flat, changeIsFavourite, navigation, setFlats, flats }) => {
   const { isFavourite, price, media, details, location } = flat;
   return (
     <View style={styles.container}>
@@ -13,7 +13,7 @@ const Ad = ({ flat, changeIsFavourite, navigation }) => {
 
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('FlatAd', {flat});
+          navigation.navigate('FlatAd', {flat, setFlats, flats});
         }}>
         <View style={styles.info}>
           <View style={styles.infoRow}>

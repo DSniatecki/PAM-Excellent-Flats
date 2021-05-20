@@ -64,6 +64,8 @@ const FlatAdListScreen = ({route, navigation}) => {
               <Ad
                 key={'favAd-' + i}
                 flat={flat}
+                flats={filteredFlats}
+                setFlats={setFilteredFlats}
                 changeIsFavourite={() => changeIsFavourite(flat)}
                 navigation={navigation}
               />
