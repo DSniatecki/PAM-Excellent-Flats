@@ -11,7 +11,6 @@ import { StatusBar } from "expo-status-bar";
 import MediaSlider from "../components/Ad/MediaSlider";
 import AppHeader from "../components/AppHeader";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
-// import MapView, { MAP_TYPES, UrlTile } from "react-native-maps";
 
 const WINDOW_WIDTH = Dimensions.get("window").width;
 const SLIDER_WIDTH = WINDOW_WIDTH;

@@ -5,6 +5,8 @@ import Ad from '../components/Ad/Ad';
 import AppHeader from '../components/AppHeader';
 import FlatsNotFound from '../components/Ad/FlatsNotFound';
 import {allFlats} from '../components/data';
+import SortMenu from "../components/SortMenu"
+import {Provider} from 'react-native-paper';
 
 const FlatAdListScreen = ({route, navigation}) => {
   const [flats, updateFlats] = useState(allFlats);
@@ -15,6 +17,20 @@ const FlatAdListScreen = ({route, navigation}) => {
     updateFlats(allFlats);
     setFilteredFlats(filterFlats());
   }, [location, priceFrom, priceTo, surfaceFrom, surfaceTo, forRental, forSale]);
+
+  const sortByPriceDesc = () => {
+    const sortedFlats = filteredFlats.sort((a, b) => a.price < b.price);
+    setFilteredFlats([...sortedFlats])
+  }
+
+  const sortByPriceAsc = () => {
+    const sortedFlats = filteredFlats.sort((a, b) => b.price < a.price);
+    setFilteredFlats([...sortedFlats])
+  }
+  const sortBySurfaceDesc = () => {
+    const sortedFlats = filteredFlats.sort((a, b) => a.details.surface < b.details.surface);
+    setFilteredFlats([...sortedFlats])
+  }
 
   const filterFlats = () => {
     let listedFlats = flats.filter(
@@ -43,29 +59,32 @@ const FlatAdListScreen = ({route, navigation}) => {
       return <FlatsNotFound />;
     } else {
       return (
-        <ScrollView>
-          {flats.map((flat, i) => (
-            <Ad
-              key={'favAd-' + i}
-              flat={flat}
-              changeIsFavourite={() => changeIsFavourite(flat)}
-              navigation={navigation}
-            />
-          ))}
-        </ScrollView>
+          <ScrollView>
+            {flats.map((flat, i) => (
+              <Ad
+                key={'favAd-' + i}
+                flat={flat}
+                changeIsFavourite={() => changeIsFavourite(flat)}
+                navigation={navigation}
+              />
+            ))}
+          </ScrollView>
       );
     }
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <AppHeader
-        screenTitle={'Ogłoszenia'}
-        navigation={navigation}
-        navigationIcon="menu"
-      />
-      {renderFlats(filteredFlats)}
-    </SafeAreaView>
+    <Provider>
+      <SafeAreaView style={styles.container}>
+        <AppHeader
+          screenTitle={'Ogłoszenia'}
+          navigation={navigation}
+          navigationIcon="menu"
+          sortMenu={<SortMenu sortByPriceDesc={sortByPriceDesc} sortByPriceAsc={sortByPriceAsc} sortBySurfaceDesc={sortBySurfaceDesc}/>}
+        />
+        {renderFlats(filteredFlats)}
+      </SafeAreaView>
+    </Provider>
   );
 };
 

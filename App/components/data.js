@@ -222,7 +222,7 @@ const flat5 = {
 const flat6 = {
   isFavourite: false,
   title: 'Interesujące mieszkanie na osiedlu Majków',
-  price: 617600,
+  price: 491600,
   forSale: true,
   forRental: false,
   media: [
@@ -270,7 +270,7 @@ const flat6 = {
 const flat7 = {
   isFavourite: false,
   title: 'Mieszkanie na nowym osiedlu przy ulicy Podmiejskiej',
-  price: 523000,
+  price: 264000,
   forSale: true,
   forRental: true,
   media: [
@@ -313,7 +313,7 @@ const flat7 = {
 const flat8 = {
   isFavourite: false,
   title: 'Interesujące mieszkanie dla studentów',
-  price: 523000,
+  price: 430000,
   forSale: true,
   forRental: false,
   media: [

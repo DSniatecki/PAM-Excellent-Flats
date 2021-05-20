@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
@@ -8,6 +8,7 @@ const AppHeader = ({
                      changeIsFavourite,
                      navigation,
                      navigationIcon,
+                     sortMenu
                    }) => {
   return (
     <View style={styles.container}>
@@ -16,21 +17,19 @@ const AppHeader = ({
         style={styles.icon}
         size={34}
         onPress={() => {
-          if (navigationIcon === "menu")
-            navigation.openDrawer();
-          else
-            navigation.goBack();
+          if (navigationIcon === 'menu') navigation.openDrawer();
+          else navigation.goBack();
         }}
       />
       <Text style={styles.title}>{screenTitle}</Text>
-      {isFavourite != null ? (
+      {isFavourite != null && (
         <Favourite
           isFavourite={isFavourite}
           changeIsFavourite={changeIsFavourite}
         />
-      ) : (
-        <Text style={{ width: 50}} />
       )}
+      {(isFavourite == null && !sortMenu) && <Text style={{width: 50}}/>}
+      {sortMenu}
     </View>
   );
 };
@@ -51,7 +50,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 34,
     color: "#d1d1d1",
-    width: 50,
   },
   title: {
     fontSize: 20,

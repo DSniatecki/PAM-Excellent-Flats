@@ -9,7 +9,7 @@ const Ad = ({ flat, changeIsFavourite, navigation }) => {
   return (
     <View style={styles.container}>
       <Favourite isFavourite={isFavourite} change={changeIsFavourite}/>
-      <MediaSlider style={{position: 'relative'}} media={media} />
+      <MediaSlider  media={media} />
 
       <TouchableOpacity
         onPress={() => {
