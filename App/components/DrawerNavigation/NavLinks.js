@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { allFlats } from "../data";
 
 export const NavLinks = ({ navigation, flatManager }) => {
   const { index, routes } = navigation.dangerouslyGetState();

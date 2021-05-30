@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "justifyContent": "center",
+      "marginTop": 80,
+      "textAlign": "center",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#c9c9c9",
+        "fontSize": 67,
+      }
+    }
+  >
+    ☹
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "#c9c9c9",
+        "fontSize": 27,
+      }
+    }
+  >
+    Nie znaleziono ogłoszeń
+  </Text>
+</View>
+`;

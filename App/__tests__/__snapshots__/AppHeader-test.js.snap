@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#383838",
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "paddingBottom": 7,
+      "paddingLeft": 18,
+      "paddingRight": 18,
+      "paddingTop": 7,
+      "width": "100%",
+    }
+  }
+>
+  <Text
+    allowFontScaling={false}
+    onPress={[Function]}
+    style={
+      Array [
+        Object {
+          "color": undefined,
+          "fontSize": 34,
+        },
+        Object {
+          "color": "#d1d1d1",
+          "fontSize": 34,
+          "fontWeight": "bold",
+        },
+        Object {
+          "fontFamily": "Material Icons",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {},
+      ]
+    }
+  >
+    
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "#f5a22b",
+        "fontSize": 20,
+        "fontWeight": "bold",
+      }
+    }
+  />
+  <Text
+    style={
+      Object {
+        "width": 50,
+      }
+    }
+  />
+</View>
+`;
