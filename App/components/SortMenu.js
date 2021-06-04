@@ -9,28 +9,30 @@ const SortMenu = ({sortByPriceDesc, sortByPriceAsc, sortBySurfaceDesc}) => {
   const closeMenu = () => setMenuVisible(false);
 
   return (
-    <Menu
+    <Menu accessibilityLabel={`sort-menu22`} testID={`sort-menu22`}
       visible={menuVisible}
       onDismiss={closeMenu}
       anchor={
         <Icon name="sort" size={34} onPress={openMenu} color="#d1d1d1" />
       }>
-      <Menu.Item disabled={true} title="Sortowanie" />
-      <Menu.Item
+      <Menu.Item disabled={true} title="Sortowanie" accessibilityLabel={`sort-menu-sort`} testID={`sort-menu-sort`} />
+      <Menu.Item accessibilityLabel={`sort-menu-price`} testID={`sort-menu-price`}
         onPress={() => {
           sortByPriceAsc();
           setMenuVisible(false);
         }}
         title="Cena: od najniższej"
       />
-      <Menu.Item
+      <Menu.Item accessibilityLabel={`sort-menu-price2`} testID={`sort-menu-price2`}
         onPress={() => {
           sortByPriceDesc();
           setMenuVisible(false);
         }}
         title="Cena: od najwyższej"
       />
-      <Menu.Item onPress={() => {
+      <Menu.Item
+          accessibilityLabel={`sort-menu-surface`} testID={`sort-menu-surface`}
+          onPress={() => {
           sortBySurfaceDesc();
           setMenuVisible(false);
         }} title="Powierzchnia: od najwyższej" />

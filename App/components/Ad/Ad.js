@@ -5,26 +5,26 @@ import MediaSlider from "./MediaSlider";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Ad = ({ flat, changeIsFavourite, navigation, setFlats, flats }) => {
-  const { isFavourite, price, media, details, location } = flat;
+  const { id, isFavourite, price, media, details, location } = flat;
   return (
-    <View style={styles.container}>
-      <Favourite isFavourite={isFavourite} change={changeIsFavourite}/>
-      <MediaSlider  media={media} />
+    <View style={styles.container} accessibilityLabel={`ad-view-${id}`} testID={`ad-view-${id}`}>
+      <Favourite id={id} isFavourite={isFavourite} change={changeIsFavourite} accessibilityLabel={`ad-favourite-${id}`} testID={`ad-favourite-${id}`}/>
+      <MediaSlider  media={media} accessibilityLabel={`ad-slider-${id}`} testID={`ad-slider-${id}`} />
 
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('FlatAd', {flat, setFlats, flats});
-        }}>
-        <View style={styles.info}>
-          <View style={styles.infoRow}>
-            <Text style={styles.price}>{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} zł</Text>
-            <Text style={styles.details}>{details.surface} m2</Text>
+        }} accessibilityLabel={`ad-touchable-${id}`} testID={`ad-touchable-${id}`}>
+        <View style={styles.info} accessibilityLabel={`ad-info-view-${id}`} testID={`ad-info-view-${id}`}>
+          <View style={styles.infoRow} accessibilityLabel={`ad-info-view2-${id}`} testID={`ad-info-view2-${id}`}>
+            <Text style={styles.price} accessibilityLabel={`ad-price-${id}`} testID={`ad-price-${id}`}>{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} zł</Text>
+            <Text style={styles.details}  accessibilityLabel={`ad-surface-${id}`} testID={`ad-surface-${id}`}>{details.surface} m2</Text>
           </View>
-          <View style={styles.infoRow}>
-            <Text style={styles.location}>
+          <View style={styles.infoRow} accessibilityLabel={`ad-location-view-${id}`} testID={`ad-location-view-${id}`}>
+            <Text style={styles.location} accessibilityLabel={`ad-location-${id}`} testID={`ad-location-${id}`}>
               {location.city}, {location.district}
             </Text>
-            <Text style={styles.details}>{details.numberOfRooms} pokoje</Text>
+            <Text style={styles.details} accessibilityLabel={`ad-rooms-${id}`} testID={`ad-rooms-${id}`}>{details.numberOfRooms} pokoje</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -32,9 +32,9 @@ const Ad = ({ flat, changeIsFavourite, navigation, setFlats, flats }) => {
   );
 };
 
-const Favourite = ({isFavourite, change}) => (
-  <View style={styles.iconBackground}>
-    <Icon
+const Favourite = ({id, isFavourite, change}) => (
+  <View style={styles.iconBackground} >
+    <Icon accessibilityLabel={`ad-fav-icon-${id}`} testID={`ad-fav-icon-${id}`}
       color="#f5a22b"
       style={styles.icon}
       size={34}

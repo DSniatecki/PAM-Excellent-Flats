@@ -7,22 +7,22 @@ import StartButtons from '../components/StartScreen/StartButtons';
 
 const StartScreen = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <ImageBackground
+    <View style={styles.container} accessibilityLabel={`flat-start-menu-view`} testID={`flat-start-menu-view`}>
+      <ImageBackground accessibilityLabel={`flat-start-img`} testID={`flat-start-img`}
         source={require('../assets/images/image.jpg')}
         style={styles.image}>
-        <Icon
+        <Icon accessibilityLabel={`flat-start-menu-icon`} testID={`flat-start-menu-icon`}
           name="menu"
           style={styles.menuButton}
           size={34}
           color="#FFF"
           onPress={() => navigation.openDrawer()}
         />
-        <Text style={styles.titleText}>
+        <Text style={styles.titleText} accessibilityLabel={`flat-start-menu-text`} testID={`flat-start-menu-text`}>
           Excellent
-          <Text style={[styles.titleText, {color: '#f7ba7b'}]}>Flats</Text>
+          <Text style={[styles.titleText, {color: '#f7ba7b'}]} accessibilityLabel={`flat-start-menu-text2`} testID={`flat-start-menu-text2`}>Flats</Text>
         </Text>
-        <StartButtons navigation={navigation}/>
+        <StartButtons navigation={navigation} accessibilityLabel={`flat-start-buttons`} testID={`flat-start-buttons`}/>
       </ImageBackground>
     </View>
   );

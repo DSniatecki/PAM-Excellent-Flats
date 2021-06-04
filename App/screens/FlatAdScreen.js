@@ -11,6 +11,7 @@ import { StatusBar } from "expo-status-bar";
 import MediaSlider from "../components/Ad/MediaSlider";
 import AppHeader from "../components/AppHeader";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
+import SortMenu from "../components/SortMenu";
 
 const WINDOW_WIDTH = Dimensions.get("window").width;
 const SLIDER_WIDTH = WINDOW_WIDTH;
@@ -22,6 +23,7 @@ const FlatAdScreen = ({ navigation, route }) => {
   const [, updateState] = useState();
   const forceUpdate = useCallback(() => updateState({}), []);
   const {
+    id,
     isFavourite,
     title,
     price,
@@ -32,8 +34,8 @@ const FlatAdScreen = ({ navigation, route }) => {
     location,
   } = flat;
   return (
-    <SafeAreaView style={styles.container}>
-      <AppHeader
+    <SafeAreaView style={styles.container} accessibilityLabel={'flat-ad'} testID={'flat-ad'}>
+      <AppHeader accessibilityLabel={`flat-ad-app-header`} testID={`flat-ad-app-header`}
         screenTitle={'Ogłoszenie'}
         isFavourite={isFavourite}
         changeIsFavourite={() => {
@@ -47,18 +49,18 @@ const FlatAdScreen = ({ navigation, route }) => {
         navigation={navigation}
       />
       <ScrollView style={styles.scrollView}>
-        <MediaSlider media={media} height={ITEM_HEIGHT} width={ITEM_WIDTH} />
-        <View style={styles.info}>
-          <View style={styles.titleSection}>
-            <Text style={styles.titleText}>{title}</Text>
-            <Text style={styles.price}>
+        <MediaSlider media={media} height={ITEM_HEIGHT} width={ITEM_WIDTH} accessibilityLabel={`flat-ad-media-slider`} testID={`flat-ad-media-slider`}/>
+        <View style={styles.info}  accessibilityLabel={`flat-ad-info-v`} testID={`flat-ad-info-v`}>
+          <View style={styles.titleSection} accessibilityLabel={`flat-ad-title-sec-v`} testID={`flat-ad-title-sec-v`}>
+            <Text style={styles.titleText} accessibilityLabel={`flat-ad-title`} testID={`flat-ad-title`}>{title}</Text>
+            <Text style={styles.price} accessibilityLabel={`flat-ad-price`} testID={`flat-ad-price`}>
               {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} zł
             </Text>
           </View>
-          <Details details={details} location={location} />
-          <Description text={description} />
-          <Contact contact={contact} />
-          <Map location={location} />
+          <Details details={details} location={location} accessibilityLabel={`flat-ad-details-0`} testID={`flat-ad-details-0`}/>
+          <Description text={description} accessibilityLabel={`flat-ad-description-0`} testID={`flat-ad-description-0`} />
+          <Contact contact={contact} accessibilityLabel={`flat-ad-contact-0`} testID={`flat-ad-contact-0`} />
+          <Map location={location} accessibilityLabel={`flat-mini-map`} testID={`flat-ad-mini-map`} />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -70,19 +72,19 @@ const Details = ({ details, location }) => {
   const { city, district } = location;
   return (
     <>
-      <Text style={styles.header}>Szczegóły</Text>
-      <View style={styles.row}>
-        <Text style={styles.text}>{marketType}</Text>
-        <Text style={styles.text}>{`${numberOfRooms} ${
+      <Text style={styles.header} accessibilityLabel={`flat-ad-details-head`} testID={`flat-ad-details-head`} >Szczegóły</Text>
+      <View style={styles.row}  accessibilityLabel={`flat-ad-details-row1`} testID={`flat-ad-details-row1`}>
+        <Text style={styles.text} accessibilityLabel={`flat-ad-market-type`} testID={`flat-ad-market-type`} >{marketType}</Text>
+        <Text style={styles.text} accessibilityLabel={`flat-ad-rooms`} testID={`flat-ad-rooms`}>{`${numberOfRooms} ${
           numberOfRooms > 1 ? 'pokoje' : 'pokój'
         }`}</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.text}>{constructionYear}</Text>
-        <Text style={styles.text}>{surface} m2</Text>
+        <Text style={styles.text}  accessibilityLabel={`flat-ad-cons-year`} testID={`flat-ad-cons-year`}>{constructionYear}</Text>
+        <Text style={styles.text} accessibilityLabel={`flat-ad-surface0`} testID={`flat-ad-surface0`}>{surface} m2</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.boldText}>{`${city}, ${district}`}</Text>
+        <Text style={styles.boldText} accessibilityLabel={`flat-ad-location0`} testID={`flat-ad-location0`}>{`${city}, ${district}`}</Text>
       </View>
     </>
   );
@@ -90,8 +92,8 @@ const Details = ({ details, location }) => {
 
 const Description = ({ text }) => (
   <>
-    <Text style={styles.header}>Opis</Text>
-    <Text style={styles.text}>{text}</Text>
+    <Text style={styles.header} accessibilityLabel={`flat-ad-description-header`} testID={`flat-ad-description-header`}>Opis</Text>
+    <Text style={styles.text} accessibilityLabel={`flat-ad-description0`} testID={`flat-ad-description0`} >{text}</Text>
   </>
 );
 
@@ -99,9 +101,9 @@ const Contact = ({ contact }) => {
   const { phoneNumber, email } = contact;
   return (
     <>
-      <Text style={styles.header}>Kontakt</Text>
-      <Text style={styles.boldText}> - {phoneNumber}</Text>
-      <Text style={styles.boldText}> - {email}</Text>
+      <Text style={styles.header} accessibilityLabel={`flat-ad-contact-header`} testID={`flat-ad-contact-header`} >Kontakt</Text>
+      <Text style={styles.boldText}  accessibilityLabel={`flat-ad-contact-phone`} testID={`flat-ad-contact-phone`} > - {phoneNumber}</Text>
+      <Text style={styles.boldText} accessibilityLabel={`flat-ad-contact-email`} testID={`flat-ad-contact-email`} > - {email}</Text>
     </>
   );
 };
@@ -109,12 +111,12 @@ const Map = ({ location }) => {
   const { city, district, coordinates } = location;
   return (
     <>
-      <Text style={styles.header}>Mapa</Text>
+      <Text style={styles.header} accessibilityLabel={`flat-ad-map-header`} testID={`flat-ad-map-header`} >Mapa</Text>
       <View style={styles.titleSection}>
         {/*<View style={styles.map}>*/}
         {/*  <Image source={require(`../assets/images/map.jpg`)} style={styles.image} />*/}
         {/*</View>*/}
-        <MapView
+        <MapView accessibilityLabel={`flat-ad-map-view`} testID={`flat-ad-map-view`}
           provider={PROVIDER_GOOGLE}
           initialRegion={{
             latitude: coordinates.latitude,
@@ -123,7 +125,7 @@ const Map = ({ location }) => {
             longitudeDelta: 0.01,
           }}
           style={styles.map}>
-          <Marker
+          <Marker  accessibilityLabel={`flat-ad-map-marker`} testID={`flat-ad-map-marker`}
             coordinate={{
               latitude: coordinates.latitude,
               longitude: coordinates.longitude,

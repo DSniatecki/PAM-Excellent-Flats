@@ -25,7 +25,7 @@ const FavouritesScreen = ({ navigation, route }) => {
       return (
         <ScrollView>
           {favouriteFlats.map((flat, i) => (
-            <Ad
+            <Ad accessibilityLabel={`ad-${i}-${flat.id}`} testID={`ad-${i}-${flat.id}`}
               key={'favAd-' + i}
               flat={flat}
               changeIsFavourite={() => changeIsFavourite(flat)}
@@ -43,7 +43,8 @@ const FavouritesScreen = ({ navigation, route }) => {
     <SafeAreaView style={styles.container}>
       <AppHeader screenTitle={"Ulubione"}
                  navigation={navigation}
-                 navigationIcon="arrow-back" />
+                 navigationIcon="arrow-back"
+                 accessibilityLabel={`flat-favourites-header`} testID={`flat-favourites-header`} />
       {
         renderFlats(favouriteFlats)
       }

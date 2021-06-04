@@ -11,8 +11,8 @@ const AppHeader = ({
                      sortMenu
                    }) => {
   return (
-    <View style={styles.container}>
-      <Icon
+    <View style={styles.container} accessibilityLabel={`app-header`} testID={`app-header`}>
+      <Icon accessibilityLabel={`app-header-icon`} testID={`app-header-icon`}
         name={navigationIcon}
         style={styles.icon}
         size={34}
@@ -21,9 +21,9 @@ const AppHeader = ({
           else navigation.goBack();
         }}
       />
-      <Text style={styles.title}>{screenTitle}</Text>
+      <Text style={styles.title} accessibilityLabel={`app-header-text`} testID={`app-header-text`} >{screenTitle}</Text>
       {isFavourite != null && (
-        <Favourite
+        <Favourite accessibilityLabel={`app-header-favour`} testID={`app-header-favour`}
           isFavourite={isFavourite}
           changeIsFavourite={changeIsFavourite}
         />

@@ -6,7 +6,7 @@ import { View, Text, Pressable, StyleSheet } from "react-native";
 const StartButtons = ({ navigation }) => {
   return (
     <View style={styles.buttonsGroup}>
-      <Pressable style={styles.button}>
+      <Pressable style={styles.button} accessibilityLabel={`start-button-press`} testID={`start-button-press`}>
         <View
           style={{
             flex: 1,
@@ -14,11 +14,11 @@ const StartButtons = ({ navigation }) => {
             alignItems: "center",
             justifyContent: "center",
           }}>
-          <Text onPress={() => navigation.navigate("Filters")} style={styles.buttonText}>Szukaj </Text>
+          <Text accessibilityLabel={`start-button-press-txt`} testID={`start-button-press-txt`} onPress={() => navigation.navigate("Filters")} style={styles.buttonText}>Szukaj </Text>
           <Icon name="search" size={34} color="#FFF" />
         </View>
       </Pressable>
-      <Pressable style={styles.button}>
+      <Pressable style={styles.button} accessibilityLabel={`start-button-press2`} testID={`start-button-press2`}>
         <View
           style={{
             flex: 1,
@@ -26,7 +26,7 @@ const StartButtons = ({ navigation }) => {
             alignItems: "center",
             justifyContent: "center",
           }}>
-          <Text style={styles.buttonText} onPress={() => navigation.navigate("Favourites")}>Ulubione </Text>
+          <Text accessibilityLabel={`start-button-press-txt2`} testID={`start-button-press-txt2`} style={styles.buttonText} onPress={() => navigation.navigate("Favourites")}>Ulubione </Text>
           <Icon name="star" size={34} color="#FFF" />
         </View>
       </Pressable>

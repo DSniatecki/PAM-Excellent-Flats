@@ -39,7 +39,7 @@ const FlatAdListScreen = ({route, navigation}) => {
       f.price >= priceFrom &&
       f.price <= priceTo &&
       f.details.surface >= surfaceFrom &&
-      f.details.surface <= surfaceTo 
+      f.details.surface <= surfaceTo
     );
 
     if (forRental === true)
@@ -61,7 +61,7 @@ const FlatAdListScreen = ({route, navigation}) => {
       return (
           <ScrollView>
             {flats.map((flat, i) => (
-              <Ad
+              <Ad accessibilityLabel={`flat-ads-ad-${i}---${flat.id}`} testID={`flat-ads-ad-${i}---${flat.id}`}
                 key={'favAd-' + i}
                 flat={flat}
                 flats={filteredFlats}
@@ -77,12 +77,14 @@ const FlatAdListScreen = ({route, navigation}) => {
 
   return (
     <Provider>
-      <SafeAreaView style={styles.container}>
-        <AppHeader
+      <SafeAreaView style={styles.container} accessibilityLabel={`flat-ads-header`} testID={`flat-ads-header`}>
+        <AppHeader accessibilityLabel={`flat-ads-header2`} testID={`flat-ads-header2`}
           screenTitle={'Ogłoszenia'}
           navigation={navigation}
           navigationIcon="menu"
-          sortMenu={<SortMenu sortByPriceDesc={sortByPriceDesc} sortByPriceAsc={sortByPriceAsc} sortBySurfaceDesc={sortBySurfaceDesc}/>}
+          sortMenu={<SortMenu
+              accessibilityLabel={`flat-ads-sort-menu`} testID={`flat-ads-sort-menu`}
+              sortByPriceDesc={sortByPriceDesc} sortByPriceAsc={sortByPriceAsc} sortBySurfaceDesc={sortBySurfaceDesc}/>}
         />
         {renderFlats(filteredFlats)}
       </SafeAreaView>

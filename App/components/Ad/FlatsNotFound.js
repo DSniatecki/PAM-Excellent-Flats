@@ -4,9 +4,9 @@ import React from "react";
 
 const FlatsNotFound = () => {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} accessibilityLabel={`ad-404-con`} testID={`ad-404-con`}>
       <Text style={styles.sign}>{"☹"}</Text>
-      <Text style={styles.text}>{"Nie znaleziono ogłoszeń"}</Text>
+      <Text style={styles.text} accessibilityLabel={`ad-404-text`} testID={`ad-404-text`} >{"Nie znaleziono ogłoszeń"}</Text>
     </View>
   );
 };

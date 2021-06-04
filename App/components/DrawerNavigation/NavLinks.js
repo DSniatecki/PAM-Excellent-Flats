@@ -7,7 +7,7 @@ export const NavLinks = ({ navigation, flatManager }) => {
   return (
     <View style={styles.navLinks}>
       <View>
-        <Text
+        <Text accessibilityLabel={`drawer-start`} testID={`drawer-start`}
           onPress={() => navigation.navigate("Start", {flatManager})}
           style={styles.navText}>
           Start
@@ -15,13 +15,13 @@ export const NavLinks = ({ navigation, flatManager }) => {
         {currentRouteName === "Start" && <View style={styles.underline}></View>}
       </View>
       <View>
-        <Text onPress={() => navigation.navigate("Filters", {flatManager})} style={styles.navText}>Szukaj</Text>
+        <Text accessibilityLabel={`drawer-search`} testID={`drawer-search`}  onPress={() => navigation.navigate("Filters", {flatManager})} style={styles.navText}>Szukaj</Text>
         {currentRouteName === "Search" && (
           <View style={styles.underline}></View>
         )}
       </View>
       <View>
-        <Text
+        <Text accessibilityLabel={`drawer-map`} testID={`drawer-map`}
           onPress={() => navigation.navigate("Map", {flatManager})}
           style={styles.navText}>
           Mapa
@@ -31,7 +31,7 @@ export const NavLinks = ({ navigation, flatManager }) => {
         )}
       </View>
       <View>
-        <Text
+        <Text accessibilityLabel={`drawer-favour`} testID={`drawer-favour`}
           onPress={() => navigation.navigate("Favourites", {flatManager})}
           style={styles.navText}>
           Ulubione

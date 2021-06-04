@@ -19,7 +19,7 @@ const MediaSlider = ({ media, width, height }) => {
     if (type === "image") {
       return (
         <View style={itemContainerStyle}>
-          <Image source={{ uri: uri }} style={imageStyle} />
+          <Image source={{ uri: uri }} style={imageStyle}  accessibilityLabel={`ad-photo-${index}-${uri}`} testID={`ad-photo-${index}-${uri}`}/>
         </View>
       );
     } else {
@@ -36,6 +36,7 @@ const MediaSlider = ({ media, width, height }) => {
 return (
     <View>
     <Carousel
+        accessibilityLabel={`ad-carousel`} testID={`ad-carousel`}
       // ref={(c) => { this._carousel = c; }}
       data={media}
       layout={"default"}

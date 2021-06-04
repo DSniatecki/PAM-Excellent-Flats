@@ -47,13 +47,13 @@ const FiltersScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <AppHeader
+    <View style={styles.container} accessibilityLabel={`flat-filters-view`} testID={`flat-filters-view`}>
+      <AppHeader accessibilityLabel={`flat-filters-header`} testID={`flat-filters-header`}
         screenTitle="Wyszukaj"
         navigation={navigation}
         navigationIcon="arrow-back"
       />
-      <Formik
+      <Formik accessibilityLabel={`flat-filters-form`} testID={`flat-filters-form`}
         initialValues={{
           location: "",
           forSale: true,
@@ -66,7 +66,7 @@ const FiltersScreen = ({ navigation }) => {
         onSubmit={values => navigation.navigate("FlatsList", values)}>
         {({ handleChange, handleBlur, handleSubmit, setFieldValue, values }) => (
           <View style={styles.form}>
-            <TextInput
+            <TextInput accessibilityLabel={`flat-filters-location-input`} testID={`flat-filters-location-input`}
               style={styles.textInput}
               onChangeText={handleChange("location")}
               value={values.location}
@@ -92,9 +92,9 @@ const FiltersScreen = ({ navigation }) => {
               selectedButtonStyle={{ backgroundColor: "#f5a44d" }}
               textStyle={{ fontSize: 16, fontWeight: "bold" }}
             />
-            <Text style={styles.text}>Cena</Text>
-            <View style={styles.selectors}>
-              <RNPickerSelect
+            <Text style={styles.text} accessibilityLabel={`flat-filters-price`} testID={`flat-filters-price`}>Cena</Text>
+            <View style={styles.selectors} accessibilityLabel={`flat-filters-5555`} testID={`flat-filters-5555`}>
+              <RNPickerSelect accessibilityLabel={`flat-filters-2133`} testID={`flat-filters-2133`}
                 onValueChange={(value, index) => {
                   setFieldValue("priceFrom", value);
                 }}
@@ -103,7 +103,7 @@ const FiltersScreen = ({ navigation }) => {
                 items={priceOptions}
                 useNativeAndroidPickerStyle={false}
               />
-              <RNPickerSelect
+              <RNPickerSelect accessibilityLabel={`flat-filters-213`} testID={`flat-filters-213`}
                 onValueChange={(value, index) => {
                   setFieldValue("priceTo", value);
                 }}
@@ -113,9 +113,9 @@ const FiltersScreen = ({ navigation }) => {
                 useNativeAndroidPickerStyle={false}
               />
             </View>
-            <Text style={styles.text}>Powierzchnia</Text>
-            <View style={styles.selectors}>
-              <RNPickerSelect
+            <Text style={styles.text} accessibilityLabel={`flat-filters-surface2`} testID={`flat-filters-surface2`}> >Powierzchnia</Text>
+            <View style={styles.selectors} accessibilityLabel={`flat-filters-view2`} testID={`flat-filters-view2`}>
+              <RNPickerSelect  accessibilityLabel={`flat-filters-3123`} testID={`flat-filters-3123`}
                 onValueChange={(value, index) => {
                   setFieldValue("surfaceFrom", value);
                 }}
@@ -124,7 +124,7 @@ const FiltersScreen = ({ navigation }) => {
                 items={surfaceOptions}
                 useNativeAndroidPickerStyle={false}
               />
-              <RNPickerSelect
+              <RNPickerSelect accessibilityLabel={`flat-filters-312399`} testID={`flat-filters-312399`}
                 onValueChange={(value, index) => {
                   setFieldValue("surfaceTo", value);
                 }}
@@ -135,8 +135,8 @@ const FiltersScreen = ({ navigation }) => {
               />
             </View>
 
-            <Pressable onPress={handleSubmit} style={styles.button}>
-              <Text style={styles.buttonText}>Zatwierdź</Text>
+            <Pressable onPress={handleSubmit} style={styles.button} accessibilityLabel={`flat-filters-press`} testID={`flat-filters-press`}>
+              <Text style={styles.buttonText} accessibilityLabel={`flat-filters-confirm`} testID={`flat-filters-confirm`}>Zatwierdź</Text>
             </Pressable>
           </View>
         )}

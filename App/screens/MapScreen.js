@@ -7,11 +7,11 @@ import WebView from "react-native-webview";
 
 var { width, height } = Dimensions.get("window");
 const MapScreen = ({ navigation }) => {
-  return (<View style={styles.container}>
-      <AppHeader screenTitle={"Mapa"}
+  return (<View style={styles.container} accessibilityLabel={`flat-ad-map-view0`} testID={`flat-ad-map-view0`}>
+      <AppHeader screenTitle={"Mapa"} accessibilityLabel={`flat-ad-map-header`} testID={`flat-ad-map-header`}
                  navigation={navigation}
                  navigationIcon="arrow-back" />
-      <MapView
+      <MapView accessibilityLabel={`flat-ad-map-view2`} testID={`flat-ad-map-view2`}
         // ref={(map) => (this.currentMap = map)}
         showsUserLocation
         provider={PROVIDER_GOOGLE}
@@ -28,24 +28,24 @@ const MapScreen = ({ navigation }) => {
           allFlats.map((flat, i) => {
               const { title, price, media, details, location } = flat;
               const { coordinates } = location;
-              return (<Marker
+              return (<Marker accessibilityLabel={`flat-map-market-${i}-${flat.id}`} testID={`flat-map-market-${i}-${flat.id}`}
                 key={"marker-" + i}
                 coordinate={{
                   latitude: coordinates.latitude,
                   longitude: coordinates.longitude,
                 }}>
-                <Callout tooltip onPress={() => {
+                <Callout accessibilityLabel={`flat-map-call-${i}-${flat.id}`} testID={`flat-map-call-${i}-${flat.id}`}  tooltip onPress={() => {
                   navigation.navigate("FlatAd", { flat });
-                }}>
-                  <View style={styles.miniAd}>
-                    <View style={styles.imageStyle}>
-                    <WebView
+                }} >
+                  <View style={styles.miniAd} accessibilityLabel={`flat-map-view-${i}-${flat.id}`} testID={`flat-map-view-${i}-${flat.id}`}>
+                    <View style={styles.imageStyle} accessibilityLabel={`flat-map-img-${i}-${flat.id}`} testID={`flat-map-img-${i}-${flat.id}`}>
+                    <WebView accessibilityLabel={`flat-map-web-view-${i}-${flat.id}`} testID={`flat-map-web-view-${i}-${flat.id}`}
                              source={{ uri: media.filter(m => m.isMain)[0].uri }} />
                     </View>
-                    <Text style={styles.titleText}>{title}</Text>
-                    <View style={styles.section2}>
-                      <Text style={styles.header}>{price} zł</Text>
-                      <Text style={styles.text}>{details.surface} m2</Text>
+                    <Text style={styles.titleText} accessibilityLabel={`flat-map-title-${i}-${flat.id}`} testID={`flat-map-title-${i}-${flat.id}`}>{title}</Text>
+                    <View style={styles.section2} accessibilityLabel={`flat-map-sec9-${i}-${flat.id}`} testID={`flat-map-sec9-${i}-${flat.id}`}>
+                      <Text style={styles.header} accessibilityLabel={`flat-map-price-${i}-${flat.id}`} testID={`flat-map-price-${i}-${flat.id}`}>{price} zł</Text>
+                      <Text style={styles.text} accessibilityLabel={`flat-map-surfac-${i}-${flat.id}`} testID={`flat-map-surfac-${i}-${flat.id}`}>{details.surface} m2</Text>
                     </View>
                   </View>
                 </Callout>
