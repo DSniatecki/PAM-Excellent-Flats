@@ -63,14 +63,14 @@ const styles = StyleSheet.create({
 
 const Favourite = ({isFavourite, changeIsFavourite}) =>
   isFavourite ? (
-    <Icon
+    <Icon accessibilityLabel={`app-header-favour-icon`} testID={`app-header-favour-icon`}
       onPress={changeIsFavourite}
       size={34}
       color="#dc143c"
       name="favorite"
     />
   ) : (
-    <Icon
+    <Icon accessibilityLabel={`app-header-favour-icon`} testID={`app-header-favour-icon`}
       onPress={changeIsFavourite}
       size={34}
       color="#d1d1d1"

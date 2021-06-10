@@ -19,7 +19,7 @@ class Finder:
 
     def click(self, id: str):
         self.driver.find_element_by_accessibility_id(id).click()
-        sleep(1)
+        sleep(1.5)
 
 
 class SimpleCalculatorTests(unittest.TestCase):
@@ -44,6 +44,7 @@ class SimpleCalculatorTests(unittest.TestCase):
         finder = Finder(self.driver)
         find = finder.find
         click = finder.click
+        find_all = finder.find_all
         assertEqual = self.assertEqual
         assertIsNotNone = self.assertIsNotNone
         assertTrue = self.assertTrue
@@ -80,10 +81,10 @@ class SimpleCalculatorTests(unittest.TestCase):
             print('Testing favourites screen...')
             header_text = find('app-header-text')
             assertEqual('Ulubione', header_text.text)
-            ad1_price = find('ad-price-1')
-            ad1_location = find('ad-location-1')
-            ad1_surface = find('ad-surface-1')
-            ad1_rooms = find('ad-rooms-1')
+            ad1_price = find('ad-price-1-0')
+            ad1_location = find('ad-location-1-0')
+            ad1_surface = find('ad-surface-1-0')
+            ad1_rooms = find('ad-rooms-1-0')
             assertEqual('630 000 zł', ad1_price.text)
             assertEqual('Wroclaw, Krzyki', ad1_location.text)
             assertEqual('92.23 m2', ad1_surface.text)
@@ -101,24 +102,23 @@ class SimpleCalculatorTests(unittest.TestCase):
 
         def test_filters():
             print('Testing filters...')
-            assertEqual('Podaj miejscowość', find('flat-filters-location-input').text)
             assertEqual('Cena', find('flat-filters-price').text)
-            assertEqual(' >Powierzchnia', find('flat-filters-surface2').text)
+            assertEqual('Powierzchnia', find('flat-filters-surface2').text)
             assertIsNotNone(find('flat-filters-press'))
 
         def test_ads():
             print('Testing ads screen...')
             assertEqual('Ogłoszenia', find('app-header-text').text)
 
-            assertEqual('630 000 zł', find('ad-price-1').text)
-            assertEqual('Wroclaw, Krzyki', find('ad-location-1').text)
-            assertEqual('92.23 m2', find('ad-surface-1').text)
-            assertEqual('4 pokoje', find('ad-rooms-1').text)
+            assertEqual('630 000 zł', find('ad-price-1-0').text)
+            assertEqual('Wroclaw, Krzyki', find('ad-location-1-0').text)
+            assertEqual('92.23 m2', find('ad-surface-1-0').text)
+            assertEqual('4 pokoje', find('ad-rooms-1-0').text)
 
-            assertEqual('523 000 zł', find('ad-price-3').text)
-            assertEqual('Wrocław, Śródmieście', find('ad-location-3').text)
-            assertEqual('41.93 m2', find('ad-surface-3').text)
-            assertEqual('2 pokoje', find('ad-rooms-3').text)
+            assertEqual('523 000 zł', find('ad-price-3-1').text)
+            assertEqual('Wrocław, Śródmieście', find('ad-location-3-1').text)
+            assertEqual('41.93 m2', find('ad-surface-3-1').text)
+            assertEqual('2 pokoje', find('ad-rooms-3-1').text)
 
         def test_selected_ad_screen():
             print('Testing selected ad screen...')
@@ -136,6 +136,113 @@ class SimpleCalculatorTests(unittest.TestCase):
             assertEqual('Opis', find('flat-ad-description-header').text)
             assertTrue(find('flat-ad-description0').text.startswith('Bardzo interesujący apartament o powierzchni'))
 
+        def test_ads_list_sorting():
+            print('Testing ads sorting...')
+            click('start-button-press')
+            click('flat-filters-press')
+            click('sort-menu-icon')
+            click('sort-menu-price')
+
+            assertEqual('264 000 zł', find('ad-price-7-0').text)
+            assertEqual('Kalisz, Kaliniec', find('ad-location-7-0').text)
+            assertEqual('41.93 m2', find('ad-surface-7-0').text)
+            assertEqual('2 pokoje', find('ad-rooms-7-0').text)
+
+            assertEqual('413 000 zł', find('ad-price-5-1').text)
+            assertEqual('Kalisz, Dobrzec', find('ad-location-5-1').text)
+            assertEqual('123.93 m2', find('ad-surface-5-1').text)
+            assertEqual('5 pokoje', find('ad-rooms-5-1').text)
+
+            click('sort-menu-icon')
+            click('sort-menu-price2')
+
+            assertEqual('630 000 zł', find('ad-price-1-0').text)
+            assertEqual('Wroclaw, Krzyki', find('ad-location-1-0').text)
+            assertEqual('92.23 m2', find('ad-surface-1-0').text)
+            assertEqual('4 pokoje', find('ad-rooms-1-0').text)
+
+            assertEqual('523 000 zł', find('ad-price-3-1').text)
+            assertEqual('Wrocław, Śródmieście', find('ad-location-3-1').text)
+            assertEqual('41.93 m2', find('ad-surface-3-1').text)
+            assertEqual('2 pokoje', find('ad-rooms-3-1').text)
+
+            click('sort-menu-icon')
+            click('sort-menu-surface')
+
+            assertEqual('413 000 zł', find('ad-price-5-0').text)
+            assertEqual('Kalisz, Dobrzec', find('ad-location-5-0').text)
+            assertEqual('123.93 m2', find('ad-surface-5-0').text)
+            assertEqual('5 pokoje', find('ad-rooms-5-0').text)
+
+            assertEqual('630 000 zł', find('ad-price-1-1').text)
+            assertEqual('Wroclaw, Krzyki', find('ad-location-1-1').text)
+            assertEqual('92.23 m2', find('ad-surface-1-1').text)
+            assertEqual('4 pokoje', find('ad-rooms-1-1').text)
+
+            click('app-header-icon')
+            click('drawer-start')
+
+
+        def test_filtering():
+            print('Testing ads filtering...')
+            click('start-button-press')
+            city_input = find('flat-filters-location-input')
+            city_input.send_keys('nieznane')
+            click('flat-filters-press')
+            assertEqual('Ogłoszenia', find('app-header-text').text)
+            assertIsNotNone(find('ad-404-text'))
+            click('app-header-icon')
+            click('drawer-search')
+
+            city_input.send_keys('Kalisz')
+            click('flat-filters-press')
+            assertEqual('Ogłoszenia', find('app-header-text').text)
+
+            assertEqual('413 000 zł', find('ad-price-5-0').text)
+            assertEqual('Kalisz, Dobrzec', find('ad-location-5-0').text)
+            assertEqual('123.93 m2', find('ad-surface-5-0').text)
+            assertEqual('5 pokoje', find('ad-rooms-5-0').text)
+
+            assertEqual('491 600 zł', find('ad-price-6-1').text)
+            assertEqual('Kalisz, Majków', find('ad-location-6-1').text)
+            assertEqual('89.45 m2', find('ad-surface-6-1').text)
+            assertEqual('4 pokoje', find('ad-rooms-6-1').text)
+
+            click('app-header-icon')
+            click('drawer-search')
+            city_input.send_keys('')
+            click('app-header-icon')
+
+            click('app-header-icon')
+            click('drawer-start')
+
+
+        def test_flats_liking():
+            print('Testing ads liking and disliking...')
+            click('start-button-press')
+            click('flat-filters-press')
+            click('ad-fav-icon-3')
+            click('app-header-icon')
+            click('drawer-favour')
+
+            assertEqual('630 000 zł', find('ad-price-1-0').text)
+            assertEqual('Wroclaw, Krzyki', find('ad-location-1-0').text)
+            assertEqual('92.23 m2', find('ad-surface-1-0').text)
+            assertEqual('4 pokoje', find('ad-rooms-1-0').text)
+
+            click('ad-touchable-3')
+            click('app-header-favour-icon')
+            click('app-header-icon')
+
+            assertEqual('630 000 zł', find('ad-price-1-0').text)
+            assertEqual('Wroclaw, Krzyki', find('ad-location-1-0').text)
+            assertEqual('92.23 m2', find('ad-surface-1-0').text)
+            assertEqual('4 pokoje', find('ad-rooms-1-0').text)
+
+            click('app-header-icon')
+            click('drawer-start')
+
+
         test_main_screen()
         click('flat-start-menu-icon')  # open drawer
         test_drawer()
@@ -144,6 +251,7 @@ class SimpleCalculatorTests(unittest.TestCase):
         click('start-button-press2')  # open favourites
         test_favourites()
         click('app-header-icon')
+        click('drawer-start')
         click('flat-start-menu-icon')
         click('drawer-map')
         test_map()
@@ -163,6 +271,9 @@ class SimpleCalculatorTests(unittest.TestCase):
         click('app-header-icon')
         click('app-header-icon')
         click('drawer-start')
+        test_flats_liking()
+        test_ads_list_sorting()
+        test_filtering()
 
 
 if __name__ == '__main__':

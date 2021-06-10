@@ -4,7 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import MediaSlider from "./MediaSlider";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Ad = ({ flat, changeIsFavourite, navigation, setFlats, flats }) => {
+const Ad = ({ flat, changeIsFavourite, navigation, setFlats, flats, orderId }) => {
   const { id, isFavourite, price, media, details, location } = flat;
   return (
     <View style={styles.container} accessibilityLabel={`ad-view-${id}`} testID={`ad-view-${id}`}>
@@ -16,15 +16,15 @@ const Ad = ({ flat, changeIsFavourite, navigation, setFlats, flats }) => {
           navigation.navigate('FlatAd', {flat, setFlats, flats});
         }} accessibilityLabel={`ad-touchable-${id}`} testID={`ad-touchable-${id}`}>
         <View style={styles.info} accessibilityLabel={`ad-info-view-${id}`} testID={`ad-info-view-${id}`}>
-          <View style={styles.infoRow} accessibilityLabel={`ad-info-view2-${id}`} testID={`ad-info-view2-${id}`}>
-            <Text style={styles.price} accessibilityLabel={`ad-price-${id}`} testID={`ad-price-${id}`}>{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} zł</Text>
-            <Text style={styles.details}  accessibilityLabel={`ad-surface-${id}`} testID={`ad-surface-${id}`}>{details.surface} m2</Text>
+          <View style={styles.infoRow} accessibilityLabel={`ad-info-view2-${id}-${orderId}`} testID={`ad-info-view2-${id}-${orderId}`}>
+            <Text style={styles.price} accessibilityLabel={`ad-price-${id}-${orderId}`} testID={`ad-price-${id}-${orderId}`}>{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} zł</Text>
+            <Text style={styles.details}  accessibilityLabel={`ad-surface-${id}-${orderId}`} testID={`ad-surface-${id}-${orderId}`}>{details.surface} m2</Text>
           </View>
-          <View style={styles.infoRow} accessibilityLabel={`ad-location-view-${id}`} testID={`ad-location-view-${id}`}>
-            <Text style={styles.location} accessibilityLabel={`ad-location-${id}`} testID={`ad-location-${id}`}>
+          <View style={styles.infoRow} accessibilityLabel={`ad-location-view-${id}-${orderId}`} testID={`ad-location-view-${id}-${orderId}`}>
+            <Text style={styles.location} accessibilityLabel={`ad-location-${id}-${orderId}`} testID={`ad-location-${id}-${orderId}`}>
               {location.city}, {location.district}
             </Text>
-            <Text style={styles.details} accessibilityLabel={`ad-rooms-${id}`} testID={`ad-rooms-${id}`}>{details.numberOfRooms} pokoje</Text>
+            <Text style={styles.details} accessibilityLabel={`ad-rooms-${id}-${orderId}`} testID={`ad-rooms-${id}-${orderId}`}>{details.numberOfRooms} pokoje</Text>
           </View>
         </View>
       </TouchableOpacity>

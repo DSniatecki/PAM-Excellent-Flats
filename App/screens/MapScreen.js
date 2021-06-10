@@ -28,13 +28,13 @@ const MapScreen = ({ navigation }) => {
           allFlats.map((flat, i) => {
               const { title, price, media, details, location } = flat;
               const { coordinates } = location;
-              return (<Marker accessibilityLabel={`flat-map-market-${i}-${flat.id}`} testID={`flat-map-market-${i}-${flat.id}`}
+              return (<Marker accessibilityLabel={`flat-map-market-${i}`} testID={`flat-map-market-${i}`}
                 key={"marker-" + i}
                 coordinate={{
                   latitude: coordinates.latitude,
                   longitude: coordinates.longitude,
                 }}>
-                <Callout accessibilityLabel={`flat-map-call-${i}-${flat.id}`} testID={`flat-map-call-${i}-${flat.id}`}  tooltip onPress={() => {
+                <Callout accessibilityLabel={`flat-map-call-${i}`} testID={`flat-map-call-${i}`}  tooltip onPress={() => {
                   navigation.navigate("FlatAd", { flat });
                 }} >
                   <View style={styles.miniAd} accessibilityLabel={`flat-map-view-${i}-${flat.id}`} testID={`flat-map-view-${i}-${flat.id}`}>

@@ -13,7 +13,7 @@ const SortMenu = ({sortByPriceDesc, sortByPriceAsc, sortBySurfaceDesc}) => {
       visible={menuVisible}
       onDismiss={closeMenu}
       anchor={
-        <Icon name="sort" size={34} onPress={openMenu} color="#d1d1d1" />
+        <Icon accessibilityLabel={`sort-menu-icon`} testID={`sort-menu-icon`} name="sort" size={34} onPress={openMenu} color="#d1d1d1" />
       }>
       <Menu.Item disabled={true} title="Sortowanie" accessibilityLabel={`sort-menu-sort`} testID={`sort-menu-sort`} />
       <Menu.Item accessibilityLabel={`sort-menu-price`} testID={`sort-menu-price`}

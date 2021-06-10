@@ -74,7 +74,7 @@ const FiltersScreen = ({ navigation }) => {
               underlineColorAndroid="transparent"
             />
             <Text style={styles.text}>lub</Text>
-            <Icon name="my-location" size={60} color="#f5a44d" onPress={() => navigation.navigate("Map")} />
+            <Icon accessibilityLabel={`location-icon`} testID={`location-icon`} name="my-location" size={60} color="#f5a44d" onPress={() => navigation.navigate("Map")} />
             <Text style={styles.text}>Wybierz</Text>
             {console.log(values)}
             <ButtonGroup
@@ -113,7 +113,7 @@ const FiltersScreen = ({ navigation }) => {
                 useNativeAndroidPickerStyle={false}
               />
             </View>
-            <Text style={styles.text} accessibilityLabel={`flat-filters-surface2`} testID={`flat-filters-surface2`}> >Powierzchnia</Text>
+            <Text style={styles.text} accessibilityLabel={`flat-filters-surface2`} testID={`flat-filters-surface2`}>Powierzchnia</Text>
             <View style={styles.selectors} accessibilityLabel={`flat-filters-view2`} testID={`flat-filters-view2`}>
               <RNPickerSelect  accessibilityLabel={`flat-filters-3123`} testID={`flat-filters-3123`}
                 onValueChange={(value, index) => {

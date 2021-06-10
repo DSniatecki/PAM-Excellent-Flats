@@ -56,12 +56,13 @@ const FlatAdListScreen = ({route, navigation}) => {
 
   const renderFlats = flats => {
     if (flats.length === 0) {
-      return <FlatsNotFound />;
+      return <FlatsNotFound accessibilityLabel={`flats-not-found`} testID={`flats-not-found`}/>;
     } else {
       return (
           <ScrollView>
             {flats.map((flat, i) => (
-              <Ad accessibilityLabel={`flat-ads-ad-${i}---${flat.id}`} testID={`flat-ads-ad-${i}---${flat.id}`}
+              <Ad accessibilityLabel={`flat-list-ad-${i}--${flat.id}`} testID={`flat-list-ad-${i}--${flat.id}`}
+                orderId={i}
                 key={'favAd-' + i}
                 flat={flat}
                 flats={filteredFlats}
